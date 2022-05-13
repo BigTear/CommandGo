@@ -1,2 +1,2 @@
 @echo off
-.\build\Release\CommandGo.exe
+.\bin\CommandGo.exe
