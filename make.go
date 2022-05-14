@@ -22,7 +22,15 @@ func main() {
 	args := (os.Args)
 	cmd := "default"
 	if len(args) > 1 {
+		// 小写命令
 		cmd = strings.ToLower(args[1])
+		// 去除命令前的 - 或 --
+		if cmd[0] == '-' {
+			cmd = cmd[1:]
+		}
+		if cmd[0] == '-' {
+			cmd = cmd[1:]
+		}
 	}
 	// 获取根路径
 	if pathBase == "" {
@@ -41,18 +49,32 @@ func main() {
 	switch cmd {
 	case "build":
 		Build()
+	case "b":
+		Build()
 	case "run":
+		Run()
+	case "r":
 		Run()
 	case "upx":
 		UPX()
+	case "u":
+		UPX()
 	case "clean":
 		Clean()
+	case "c":
+		Clean()
+	case "help":
+		Help()
+	case "h":
+		Help()
 	case "default":
 		// 没有参数，默认命令 Run
 		Run()
 	}
 }
-
+func Help() {
+	println("帮助:\n可用参数(缩写):\n  构建: build(b)\n  运行: run(r)\n  压缩: UPX(u)\n  清理: clean(c)\n  帮助: help(h)\n例子:\n  make b\n  make build\n  make -b\n  make --build")
+}
 func Clean() {
 	if isPathExists(pathExe) {
 		err := os.Remove(pathExe)
