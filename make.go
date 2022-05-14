@@ -5,6 +5,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"strings"
+	"time"
 )
 
 const (
@@ -118,7 +119,9 @@ func Run() bool {
 	cmd.Stderr = os.Stderr
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
+	timeStart := time.Now()
 	cmd.Run()
+	println("执行用时:", time.Since(timeStart).String())
 	return true
 }
 
