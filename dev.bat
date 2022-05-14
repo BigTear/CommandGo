@@ -1,2 +1,2 @@
 @echo off
-go run .\cmd\main.go
+go run .\cmd\CommandGo\main.go
